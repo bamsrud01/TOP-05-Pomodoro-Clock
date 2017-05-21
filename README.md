@@ -11,4 +11,4 @@ This application is a clock used in the Pomodoro time-management technique.  Tim
 
 ## Curriculum
 
-- [The Odin Project](www.theodinproject.com): Web Development 101 Project: [Rails](https://www.theodinproject.com/courses/web-development-101/lessons/pairing-project)
+- [The Odin Project](www.theodinproject.com): Web Development 101 Project: [Paired Pomodoro Project](https://www.theodinproject.com/courses/web-development-101/lessons/pairing-project)
