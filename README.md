@@ -2,7 +2,9 @@
 
 ## Description
 
-This application is a clock used in the Pomodoro time-management technique.  Time is counted in intervals of 25 minutes of work and 5 minutes of rest.
+This application is a clock used in the Pomodoro time-management technique.  Time is counted in intervals of 25 minutes of work and 5 minutes of rest.  The user can adjust the time to suit their needs.
+
+View it on [CodePen](https://codepen.io/bamsrud01/pen/mmvdEw)!
 
 ## Author
 
