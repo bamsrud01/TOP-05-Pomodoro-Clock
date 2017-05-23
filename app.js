@@ -2,15 +2,11 @@
 let workTime = 1500;
 let breakTime = 300;
 let isRunning = false;
+let timer;
+let working = true;
 
 //  jQuery event handlers
 $(document).ready(() => {
-
-  //  Set up initial times
-  function setUpClock() {
-    $('#work-time').text(workTime / 60);
-    $('#break-time').text(breakTime / 60);
-  }
 
   //  Handle subtract time button
   $('.time').on('click', '.subtract', function() {
@@ -26,20 +22,28 @@ $(document).ready(() => {
 
   //  Start and stop clock
   $('#buttons').on('click', '#play-pause', function() {
-    console.log('clicked');
     if (!isRunning) {
-      console.log(workTime);
-      console.log(breakTime);
-      // isRunning = true;
+      isRunning = true;
+      $('#play-pause').text('Pause');
       //  Start clock
+      startTimer();
     } else {
-
+      isRunning = false;
+      $('#play-pause').text('Start');
+      clearInterval(timer);
     }
   });
 
   setUpClock();
 
 });
+
+//  Set up initial times
+function setUpClock() {
+  $('#work-time').text(workTime / 60);
+  $('#break-time').text(breakTime / 60);
+  $('#clock-minutes').text($('#work-time').text());
+}
 
 //  Function to change work or rest time
 function changeTime($time, timeChange) {
@@ -48,7 +52,50 @@ function changeTime($time, timeChange) {
     $time.text(newTime);
     workTime = $('#work-time').text() * 60;
     breakTime = $('#break-time').text() * 60;
-    console.log('Inside', workTime);
-    console.log('Inside', breakTime);
+    $('#clock-minutes').text($('#work-time').text());
   }
+}
+
+//  Function to toggle between work time and break time
+function toggle() {
+  working = !working;
+  workTime = $('#work-time').text() * 60;
+  breakTime = $('#break-time').text() * 60;
+}
+
+//  Function to display time
+function displayTime(time) {
+  $('#clock-minutes').text(Math.floor(time / 60));
+  let seconds = time % 60;
+  if (seconds < 10) {
+    seconds = '0' + seconds;
+  }
+  $('#clock-seconds').text(seconds);
+  if (!working) {
+    $('#clock').css('color', 'blue');
+  } else {
+    $('#clock').css('color', 'black');
+  }
+}
+
+//  Function to start timer
+function startTimer() {
+  timer = setInterval(function() {
+    //  Do countdown
+    if (working) {
+      workTime --;
+      displayTime(workTime);
+      console.log('work', workTime);
+      if (workTime == 0) {
+        toggle();
+      }
+    } else {
+      breakTime--;
+      displayTime(breakTime);
+      console.log('break', breakTime);
+      if (breakTime == 0) {
+        toggle();
+      }
+    }
+  }, 1000);
 }
