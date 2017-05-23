@@ -34,6 +34,15 @@ $(document).ready(() => {
     }
   });
 
+  //  Reset clock
+  $('#buttons').on('click', '#reset', function() {
+    clearInterval(timer);
+    isRunning = false;
+    workTime = $('#work-time').text() * 60;
+    breakTime = $('#break-time').text() * 60;
+    setUpClock();
+  });
+
   setUpClock();
 
 });
@@ -43,6 +52,7 @@ function setUpClock() {
   $('#work-time').text(workTime / 60);
   $('#break-time').text(breakTime / 60);
   $('#clock-minutes').text($('#work-time').text());
+  $('#clock-seconds').text('00');
 }
 
 //  Function to change work or rest time
