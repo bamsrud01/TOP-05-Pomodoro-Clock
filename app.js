@@ -50,13 +50,15 @@ $(document).ready(() => {
 
 //  Set up initial times
 function setUpClock() {
+  working = true;
   displayTime(workTime);
+  $('#work-time').text(workTime / 60);
   $('#break-time').text(breakTime / 60);
 }
 
 //  Function to change work or rest time
 function changeTime($time, timeChange) {
-  if (!isRunning && ($time.text() >= 1 || timeChange >= 1)) {
+  if (!isRunning && ($time.text() > 1 || timeChange == 1)) {
     let newTime = parseInt($time.text()) + timeChange;
     $time.text(newTime);
     workTime = $('#work-time').text() * 60;

@@ -2,7 +2,10 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Pomodoro Clock</title>
+    <link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet"  />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <script
       src="https://code.jquery.com/jquery-3.2.1.js"
@@ -11,38 +14,48 @@
     </script>
     <script src="app.js"></script>
   </head>
-  <body class="working">
-    <header>
-      <h1>Pomodoro Clock</h1>
+  <body class="working container-fluid">
+    <header class="row">
+      <h1 class="col-lg-offset-3 col-lg-6">Pomodoro Clock</h1>
     </header>
-    <section>
-      <div id="options">
-        <div class="time">
+    <section class="row">
+      <div id="options" class="row">
+        <div class="time col-lg-offset-1 col-lg-4">
+          <h3>Work Time</h3>
           <h3><span id="work-time"></span>:00</h3>
-          <button type="button" class="subtract">-</button>
-          <button type="button" class="add">+</button>
+          <button type="button" class="subtract btn btn-danger col-lg-offset-2 col-lg-2">-</button>
+          <button type="button" class="add btn btn-success col-lg-offset-4 col-lg-2">+</button>
         </div>
-        <div class="time">
+        <div class="time col-lg-offset-2 col-lg-4">
+          <h3>Break Time</h3>
           <h3><span id="break-time"></span>:00</h3>
-          <button type="button" class="subtract">-</button>
-          <button type="button" class="add">+</button>
+          <button type="button" class="subtract btn btn-danger col-lg-offset-2 col-lg-2">-</button>
+          <button type="button" class="add btn btn-success col-lg-offset-4 col-lg-2">+</button>
         </div>
       </div>
-      <div id="display">
-        <h1 id="status"></h1>
-        <h1 id="clock">
+      <div id="display" class="row">
+        <h1 id="status" class="col-lg-offset-3 col-lg-6"></h1>
+        <h1 id="clock" class="col-lg-offset-3 col-lg-6">
           <span id="clock-minutes"></span>
           :
           <span id="clock-seconds">00</span>
         </h1>
       </div>
-      <div id="buttons">
-        <button type="button" id="play-pause">Start</button>
-        <button type="button" id="reset">Reset</button>
+      <div id="buttons" class="row">
+        <div class="col-lg-offset-3 col-lg-6 button-display">
+          <button type="button" id="play-pause" class="col-lg-offset-2 col-lg-3 btn btn-primary">Start</button>
+          <button type="button" id="reset" class="col-lg-offset-2 col-lg-3 btn btn-primary" >Reset</button>
+        </div>
       </div>
     </section>
-    <footer>
-
+    <footer class="row">
+      <p class="col-lg-offset-1 col-lg-4">
+        Created by Barrett Amsrud, May 2017
+      </p>
+      <div class="col-lg-offset-2 col-lg-4">
+        <a class="col-lg-offset-2 col-lg-3" href="https://github.com/bamsrud01">GitHub</a>
+        <a class="col-lg-offset-2 col-lg-3" href="http://codepen.io/bamsrud01/">CodePen</a>
+      </div>
     </footer>
   </body>
 </html>
