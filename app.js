@@ -29,7 +29,7 @@ $(document).ready(() => {
       startTimer();
     } else {
       isRunning = false;
-      $('#play-pause').text('Start');
+      $('#play-pause').text('Resume');
       clearInterval(timer);
     }
   });
@@ -40,6 +40,7 @@ $(document).ready(() => {
     isRunning = false;
     workTime = $('#work-time').text() * 60;
     breakTime = $('#break-time').text() * 60;
+    $('#play-pause').text('Start');
     setUpClock();
   });
 
@@ -49,10 +50,8 @@ $(document).ready(() => {
 
 //  Set up initial times
 function setUpClock() {
-  $('#work-time').text(workTime / 60);
+  displayTime(workTime);
   $('#break-time').text(breakTime / 60);
-  $('#clock-minutes').text($('#work-time').text());
-  $('#clock-seconds').text('00');
 }
 
 //  Function to change work or rest time
@@ -82,9 +81,13 @@ function displayTime(time) {
   }
   $('#clock-seconds').text(seconds);
   if (!working) {
-    $('#clock').css('color', 'blue');
+    $('.working').removeClass('working');
+    $('body').addClass('resting');
+    $('#status').text('BREAK');
   } else {
-    $('#clock').css('color', 'black');
+    $('.resting').removeClass('resting');
+    $('body').addClass('working');
+    $('#status').text('WORK');
   }
 }
 
